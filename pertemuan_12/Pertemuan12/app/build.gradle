@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def lifeCycleExtensionVersion = '1.1.1'
+def supportVersion = '28.0.0'
+def retrofitVersion = '2.3.0'
+def glideVersion = '4.8.0'
+def rxJavaVersion = '2.0.1'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        applicationId "android.com.example.pertemuan12"
+        minSdkVersion 22
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:22.0.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+
+    //rxJava
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+
+    //ui
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "android.arch.lifecycle:extensions:$lifeCycleExtensionVersion"
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation "com.android.support:recyclerview-v7:$supportVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+}
